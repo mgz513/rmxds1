@@ -125,8 +125,7 @@
       },
       "500_(Main)": {
         "$type": "color",
-        "$value": "#D50000"
-        "$description": "trying"
+        "$value": "#008dd5 "
       },
       "Rm12": {
         "$type": "color",
