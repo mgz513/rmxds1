@@ -126,8 +126,6 @@
       "500_(Main)": {
         "$type": "color",
         "$value": "#D50000"
-        "$description": "IM testing this out"
-        }
       },
       "Rm12": {
         "$type": "color",
