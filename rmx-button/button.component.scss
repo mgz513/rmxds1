@@ -8,6 +8,10 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  // Centre the label explicitly — do not rely on flex alone or the UA
+  // `button { text-align: center }` default (a global reset can zero it,
+  // and a wrapped label only stays centred with this set). See SKILL.md → Guardrails.
+  text-align: center;
   gap: var(--rmx-spacing-xs);
   border: none;
   border-radius: var(--rmx-radius-sm);
@@ -116,6 +120,14 @@
     justify-content: center;
     width: 20px;
     height: 20px;
+
+    // Collapse an icon slot that received no projected content. Without
+    // this, `[leadingIcon]/[trailingIcon]="true"` with an empty slot still
+    // renders a 20px box (and its flex gap), pushing the label ~14px off
+    // the button's optical centre. See SKILL.md → Guardrails.
+    &:empty {
+      display: none;
+    }
   }
 
   &--compact &__icon {

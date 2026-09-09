@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "rmx-demo",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["start", "--prefix", "/private/tmp/claude-501/-Users-milagraham-Desktop-LCS-RMXDS-Claude-rmxds1/35aab3ee-c98b-4b2e-a756-338db998c3ee/scratchpad/rmx-demo", "--", "--port", "4200"],
+      "port": 4200
+    }
+  ]
+}
