@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { IconComponent } from '../rmx-icon/icon.component';
 
 // Types match the JSON contract in SKILL.md's Component Registry.
 // Valid type/size combinations are enforced by the JSON validator upstream
@@ -19,7 +20,7 @@ const VALID_SIZES_BY_TYPE: Record<RmxButtonType, RmxButtonSize[]> = {
 @Component({
   selector: 'app-button',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, IconComponent],
   templateUrl: './button.component.html',
   styleUrl: './button.component.scss',
 })
@@ -28,8 +29,12 @@ export class ButtonComponent {
   @Input() size: RmxButtonSize = 'default';
   @Input() text = 'Button';
   @Input() disabled = false;
-  @Input() leadingIcon = false;
-  @Input() trailingIcon = false;
+
+  // Material Symbols icon name (e.g. "add_circle"), or undefined for no icon.
+  // Changed from boolean to string — see SKILL.md note on why an *ngIf on
+  // real content (a name) replaces the earlier :empty-slot workaround.
+  @Input() leadingIcon?: string;
+  @Input() trailingIcon?: string;
   @Input() showText = true;
 
   ngOnChanges(): void {
@@ -55,5 +60,15 @@ export class ButtonComponent {
       `rmx-btn--${this.size}`,
       this.disabled ? 'is-disabled' : '',
     ].filter(Boolean);
+  }
+
+  // Icons should match each button type's text color, not a fixed default.
+  // Primary/Tab Button/Split Button text is white-on-color; Secondary/Action
+  // Text/Marketing text is colored-on-white. Disabled overrides both.
+  get iconColor(): 'white' | 'brand' | 'dark-blue' | 'disabled' {
+    if (this.disabled) return 'disabled';
+    if (this.type === 'primary' || this.type === 'tab-button') return 'white';
+    if (this.type === 'marketing') return 'dark-blue';
+    return 'brand'; // secondary, action-text
   }
 }

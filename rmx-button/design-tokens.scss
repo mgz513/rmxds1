@@ -32,6 +32,18 @@
   --rmx-text-onlight: #13314c;
   --rmx-text-disabled: #b3b3b3;
 
+  // Color — Icon (confirmed via Flexible Icon component, node 1294:248)
+  // Mapping of Figma color name -> token inferred from value/name
+  // correlation, not a directly-confirmed per-variant binding.
+  --rmx-icon-primary: #008dd5; // "Brand"
+  --rmx-icon-secondary: #ffffff; // "White"
+  --rmx-icon-tertiary: #666666; // "Default"
+  --rmx-icon-quaternary: #13314c; // "Dark Blue"
+  --rmx-icon-disabled: #b3b3b3; // "Disabled"
+  --rmx-icon-error: #eb343c; // "Error"
+  --rmx-icon-success: #6eb744; // "Success"
+  --rmx-icon-attention: #f58220; // "Attention"
+
   // Spacing (only "none" and "xs" confirmed with real px values so far)
   --rmx-spacing-none: 0px;
   --rmx-spacing-xs: 8px;

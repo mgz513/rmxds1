@@ -52,9 +52,60 @@ text inputs, selects, and textareas align their content/text to the **inline
 start** (left in LTR) by convention and platform expectation — do **not**
 force `text-align: center` on them or on their labels.
 
+### Icon slots: gate on real content, not a boolean flag
+
+**What happened, again:** the phantom-box bug above was caused by an icon
+slot that reserved layout space even when empty. Rather than keep patching
+that with `:empty { display: none }`, Button's `leadingIcon`/`trailingIcon`
+inputs were changed from `boolean` to `string | undefined` (a Material
+Symbols icon name). Wrapping the icon in `*ngIf="leadingIcon"` means an
+absent icon renders nothing at all — no phantom box is possible through
+this path.
+
+**Rule going forward:** for any optional icon/adornment slot on a new
+component, prefer `*ngIf` on real content (a name, an object, a non-empty
+value) over a boolean presence flag. A boolean only tells the template
+*whether* to reserve the slot, not what fills it — the same disconnect
+that caused the original bug.
+
+## Component Registry
+
+### Icon — `type: "icon"` — Angular selector `app-icon` (source: Flexible Icon, node 1294:248)
+Wraps Angular Material's `mat-icon`. **Material set only for now** — see
+Notes below for why Express (custom product icons) is deferred.
+
+Props: `name` (Material Symbols ligature, e.g. `add_circle`) · `size`:
+small/medium/large/x-large · `color`: default/brand/white/error/disabled/
+dark-blue/success/attention
+
+Prerequisite: the Material Symbols font must be linked in `index.html` —
+`mat-icon` renders nothing without it even if the component is wired
+correctly.
+
+Confirmed token values (via `get_variable_defs` on node 1294:248):
+`icon-primary #008dd5` (Brand), `icon-secondary #ffffff` (White),
+`icon-tertiary #666666` (Default), `icon-quaternary #13314c` (Dark Blue),
+`icon-disabled #b3b3b3`, `icon-error #eb343c`, `icon-success #6eb744`,
+`icon-attention #f58220`.
+
+Note: the color-name → token mapping (which hex is "Default" vs "Brand"
+etc.) was inferred from value/name correlation, not a directly-confirmed
+per-variant Figma binding. Cross-checked against Button and it's
+self-consistent — Marketing button text `#13314c` matches icon "Dark Blue"
+`#13314c`; Secondary/Action Text link color `#008dd5` matches icon "Brand"
+`#008dd5`. Treat as reliable but flag if a rendered color looks off.
+
 ## Notes
 
 - **Split Button** is out of scope for the base `Button` entry — it is a
   two-part composite and needs its own registry entry.
 - Extend `design-tokens.scss` only with token values confirmed by a component
   that actually consumes them. Never hand-guess a px value.
+- **Express icons (custom product icons) are deliberately deferred.**
+  Flexible Icon swaps between two sources: Material (Google's Material
+  Symbols — no export needed, resolved via `mat-icon`) and Express (custom
+  icons unique to this DS — `owners`, `calculator`, `contacts`, etc. —
+  organized into a large multi-category library, not a small flat set).
+  Express icons need a real bulk SVG export from Figma (the native Export
+  panel, not pulled node-by-node) before an `expressIcon` input is added
+  to Icon. Revisit when needed.

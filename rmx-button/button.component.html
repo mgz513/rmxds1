@@ -1,11 +1,19 @@
 <button type="button" [class]="hostClasses.join(' ')" [disabled]="disabled">
-  <span class="rmx-btn__icon rmx-btn__icon--leading" *ngIf="leadingIcon">
-    <ng-content select="[slot=leading-icon]"></ng-content>
-  </span>
+  <app-icon
+    *ngIf="leadingIcon"
+    class="rmx-btn__icon rmx-btn__icon--leading"
+    [name]="leadingIcon"
+    [size]="size === 'compact' ? 'small' : 'medium'"
+    [color]="iconColor"
+  ></app-icon>
 
   <span class="rmx-btn__text" *ngIf="showText">{{ text }}</span>
 
-  <span class="rmx-btn__icon rmx-btn__icon--trailing" *ngIf="trailingIcon">
-    <ng-content select="[slot=trailing-icon]"></ng-content>
-  </span>
+  <app-icon
+    *ngIf="trailingIcon"
+    class="rmx-btn__icon rmx-btn__icon--trailing"
+    [name]="trailingIcon"
+    [size]="size === 'compact' ? 'small' : 'medium'"
+    [color]="iconColor"
+  ></app-icon>
 </button>
