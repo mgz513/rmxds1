@@ -1,0 +1,11 @@
+<button type="button" [class]="hostClasses.join(' ')" [disabled]="disabled">
+  <span class="rmx-btn__icon rmx-btn__icon--leading" *ngIf="leadingIcon">
+    <ng-content select="[slot=leading-icon]"></ng-content>
+  </span>
+
+  <span class="rmx-btn__text" *ngIf="showText">{{ text }}</span>
+
+  <span class="rmx-btn__icon rmx-btn__icon--trailing" *ngIf="trailingIcon">
+    <ng-content select="[slot=trailing-icon]"></ng-content>
+  </span>
+</button>

@@ -1,0 +1,18 @@
+[
+  {
+    "type": "button",
+    "props": { "type": "primary", "text": "Continue", "trailingIcon": true }
+  },
+  {
+    "type": "button",
+    "props": { "type": "secondary", "size": "compact", "text": "Cancel", "leadingIcon": true }
+  },
+  {
+    "type": "button",
+    "props": { "type": "action-text", "text": "Learn more" }
+  },
+  {
+    "type": "button",
+    "props": { "type": "primary", "text": "Continue", "disabled": true }
+  }
+]

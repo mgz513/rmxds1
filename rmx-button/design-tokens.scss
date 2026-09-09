@@ -1,0 +1,48 @@
+// RMX design tokens — CSS custom properties
+// Source: RMX Foundations (Figma). Only tokens confirmed via components
+// actually pulled so far are given real values here. Extend this file as
+// more components surface more tokens — never hand-guess a value.
+// Generated as part of the Figma-to-Angular JSON pipeline (see SKILL.md).
+
+:root {
+  // Color — Background/Button (confirmed via Button component)
+  --rmx-background-button-primary: #008dd5;
+  --rmx-background-button-primary-hover: #0071aa;
+  --rmx-background-button-secondary: #ffffff;
+  --rmx-background-button-secondary-hover: #ebf1f5;
+  --rmx-background-button-tertiary: #f79b4d;
+  --rmx-background-button-tertiary-hover: #f9b479;
+  --rmx-background-brand-primary-disabled: rgba(0, 141, 213, 0.5);
+
+  // Color — Container
+  --rmx-container-primary: #ffffff;
+  --rmx-container-secondary: #008dd5;
+
+  // Color — Border
+  --rmx-border-secondary: #008dd5;
+  --rmx-border-disabled: #ebf1f5;
+  --rmx-border-white: #ffffff;
+
+  // Color — Icon
+  --rmx-icon-primary: #008dd5;
+
+  // Color — Text
+  --rmx-text-inverse: #ffffff;
+  --rmx-text-link: #008dd5;
+  --rmx-text-onlight: #13314c;
+  --rmx-text-disabled: #b3b3b3;
+
+  // Spacing (only "none" and "xs" confirmed with real px values so far)
+  --rmx-spacing-none: 0px;
+  --rmx-spacing-xs: 8px;
+
+  // Radius
+  --rmx-radius-sm: 4px;
+
+  // Typography
+  --rmx-font-family-text: 'Roboto', sans-serif;
+  --rmx-font-size-md: 14px;
+  --rmx-font-size-lg: 16px;
+  --rmx-font-weight-regular: 400;
+  --rmx-font-weight-medium: 500;
+}

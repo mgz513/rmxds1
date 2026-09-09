@@ -1,0 +1,125 @@
+// This component assumes design-tokens.scss has been loaded globally
+// (e.g. imported once in styles.scss) so the --rmx-* custom properties
+// are available on :root. Adjust the path below if you'd rather import
+// it locally per-component instead.
+// @use '../design-tokens';
+
+.rmx-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--rmx-spacing-xs);
+  border: none;
+  border-radius: var(--rmx-radius-sm);
+  cursor: pointer;
+  font-family: var(--rmx-font-family-text);
+  font-size: var(--rmx-font-size-md);
+  font-weight: var(--rmx-font-weight-regular);
+  padding: var(--rmx-spacing-xs);
+  height: 36px;
+  transition: background-color 0.15s ease;
+
+  // --- Size ---
+  &--default {
+    height: 36px;
+  }
+  &--compact {
+    height: 24px;
+  }
+  &--xl {
+    font-size: var(--rmx-font-size-lg);
+  }
+
+  // --- Type: Primary ---
+  &--primary {
+    background: var(--rmx-background-button-primary);
+    color: var(--rmx-text-inverse);
+
+    &:hover:not(.is-disabled) {
+      background: var(--rmx-background-button-primary-hover);
+    }
+    &.is-disabled {
+      background: var(--rmx-background-brand-primary-disabled);
+      cursor: not-allowed;
+    }
+  }
+
+  // --- Type: Secondary ---
+  &--secondary {
+    background: var(--rmx-background-button-secondary);
+    color: var(--rmx-text-link);
+    border: 1px solid var(--rmx-border-secondary);
+
+    &:hover:not(.is-disabled) {
+      background: var(--rmx-background-button-secondary-hover);
+    }
+    &.is-disabled {
+      background: var(--rmx-container-primary);
+      border-color: var(--rmx-border-disabled);
+      color: var(--rmx-text-disabled);
+      cursor: not-allowed;
+    }
+  }
+
+  // --- Type: Action Text ---
+  &--action-text {
+    background: transparent;
+    color: var(--rmx-text-link);
+    padding: var(--rmx-spacing-none);
+    height: auto;
+
+    &:hover:not(.is-disabled) {
+      background: rgba(0, 0, 0, 0.05);
+    }
+    &.is-disabled {
+      color: var(--rmx-background-brand-primary-disabled);
+      cursor: not-allowed;
+    }
+  }
+
+  // --- Type: Marketing ---
+  // Note: Marketing has no confirmed Disabled variant in Figma — only
+  // Default/Hover. Leaving disabled styling unhandled intentionally
+  // rather than inventing one.
+  &--marketing {
+    width: 296px;
+    height: 48px;
+    background: var(--rmx-background-button-tertiary);
+    color: var(--rmx-text-onlight);
+    font-weight: var(--rmx-font-weight-medium);
+    font-size: var(--rmx-font-size-lg);
+
+    &:hover {
+      background: var(--rmx-background-button-tertiary-hover);
+    }
+  }
+
+  // --- Type: Tab Button ---
+  &--tab-button {
+    background: var(--rmx-container-secondary);
+    color: var(--rmx-text-inverse);
+    height: 24px;
+    border-radius: var(--rmx-radius-sm) var(--rmx-radius-sm) 0 0;
+
+    &:hover:not(.is-disabled) {
+      background: var(--rmx-background-button-primary-hover);
+    }
+    &.is-disabled {
+      background: var(--rmx-background-brand-primary-disabled);
+      cursor: not-allowed;
+    }
+  }
+
+  &__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+  }
+
+  &--compact &__icon {
+    width: 16px;
+    height: 16px;
+  }
+}
