@@ -1,0 +1,60 @@
+// Assumes design-tokens.scss is loaded globally (see rmx-button/README.md).
+// This component also assumes the Material Symbols font is loaded in
+// index.html — see the Icon section of SKILL.md for the exact link tag.
+
+.rmx-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+
+  // --- Size --- (confirmed from Flexible Icon: 16/20/24/32px)
+  &--small {
+    font-size: 16px;
+    width: 16px;
+    height: 16px;
+  }
+  &--medium {
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+  }
+  &--large {
+    font-size: 24px;
+    width: 24px;
+    height: 24px;
+  }
+  &--x-large {
+    font-size: 32px;
+    width: 32px;
+    height: 32px;
+  }
+
+  // --- Color --- mapping inferred from value/name correlation, not a
+  // directly-confirmed per-variant binding. Spot-check against Figma if
+  // a color looks wrong.
+  &--default {
+    color: var(--rmx-icon-tertiary);
+  }
+  &--brand {
+    color: var(--rmx-icon-primary);
+  }
+  &--white {
+    color: var(--rmx-icon-secondary);
+  }
+  &--error {
+    color: var(--rmx-icon-error);
+  }
+  &--disabled {
+    color: var(--rmx-icon-disabled);
+  }
+  &--dark-blue {
+    color: var(--rmx-icon-quaternary);
+  }
+  &--success {
+    color: var(--rmx-icon-success);
+  }
+  &--attention {
+    color: var(--rmx-icon-attention);
+  }
+}
